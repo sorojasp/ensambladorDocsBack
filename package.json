@@ -4,6 +4,7 @@
   "description": "servidor de demo de ensamblador de documentos",
   "main": "index.js",
   "scripts": {
+    "//": "Este script se ejecuta cuando el servidor se despliega en heroku ",
     "start": "node build/index.js"
   },
   "author": "Ing. Stiven Rojas",
