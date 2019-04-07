@@ -4,8 +4,8 @@
   "description": "servidor de demo de ensamblador de documentos",
   "main": "index.js",
   "scripts": {
-   
-},
+    "dev": "nodemon build/index.js"
+  },
   "author": "Ing. Stiven Rojas",
   "license": "ISC",
   "dependencies": {
