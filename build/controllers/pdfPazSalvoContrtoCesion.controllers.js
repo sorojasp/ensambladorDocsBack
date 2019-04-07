@@ -34,6 +34,17 @@ class pdfPazCesion {
             const dataBaseAbogado = yield indexControllers_1.indexControllers.cliente(req, res);
             console.log(`datos abogado:${dataBaseAbogado.nombre_apellido}`);
             yield pdf(dataBaseAbogado);
+            //res.setHeader('Content-Type', 'application/pdf');
+            //res.download(path.join(__dirname, `../front/Demanda.pdf`));
+            //https://expressjs.com/en/api.html#res.download
+            res.download(path_1.default.join(__dirname, `../front/Demanda.pdf`), 'Demanda.pdf', function (err) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    // decrement a download credit, etc.
+                }
+            });
         });
     }
     descargarPdf(req, res) {
@@ -42,7 +53,7 @@ class pdfPazCesion {
                 //*** */const identificacion = req.params.identificacion;
                 // const personaResult: Persona[] = await database.query(`SELECT * FROM Personas WHERE cedulaPersona = ${identificacion}`);
                 // const persona: Persona = personaResult[0];
-                res.status(200).download(path_1.default.join(__dirname, `../front/Demanda.pdf`));
+                res.download(path_1.default.join(__dirname, `../front/Demanda.pdf`));
             }
             catch (err) {
                 console.log('Error al descargar el PDF para descargar\n', err);

@@ -17,7 +17,7 @@ export class Server {
     }
 
     configApp(): void{ //método para configurar app
-        this.app.set('port' , process.env.port || '3000');
+        this.app.set('port' , process.env.PORT || '3000');
 
     }
 
@@ -43,8 +43,12 @@ export class Server {
         this.app.use(express.urlencoded({ extended: false }));
         this.app.use((req,res,next)=>{
             console.log(`urlRequerida:${req.url} - métodoRequerido:${req.method}`);
+            
 
         })
+
+        
+        
         
     
       }

@@ -23,6 +23,9 @@ class pdfPazCesion {
 
     async generarPdf(req: Request, res: Response) {
 
+      
+      
+
      const pdf = async (datosAbogado: any) => {
         try {
           const docDefinition = new DocDefinition(datosAbogado);
@@ -39,14 +42,25 @@ class pdfPazCesion {
       }
       const dataBaseAbogado =  await indexControllers.cliente(req,res);
 
+  
+
       console.log(`datos abogado:${dataBaseAbogado.nombre_apellido}`)
      
       
       await pdf(dataBaseAbogado)
 
+      //res.setHeader('Content-Type', 'application/pdf');
+     
+      //res.download(path.join(__dirname, `../front/Demanda.pdf`));
+//https://expressjs.com/en/api.html#res.download
+      res.download(path.join(__dirname, `../front/Demanda.pdf`), 'Demanda.pdf', function(err){
+        if (err) {
+          console.log(err)
+        } else {
+          // decrement a download credit, etc.
+        }
+      });
       
-      
-
     }
 
   public async descargarPdf(req: Request, res: Response) {
@@ -60,7 +74,7 @@ class pdfPazCesion {
   
         // const persona: Persona = personaResult[0];
   
-        res.status(200).download(path.join(__dirname, `../front/Demanda.pdf`));
+        res.download(path.join(__dirname, `../front/Demanda.pdf`));
   
       }
       catch (err) {

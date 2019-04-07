@@ -4,8 +4,8 @@
   "description": "servidor de demo de ensamblador de documentos",
   "main": "index.js",
   "scripts": {
-    "//": "Este script se ejecuta cuando el servidor se despliega en heroku ",
-    "start": "node build/index.js"
+    "build": "tsc -w",
+    "dev": "nodemon build/index.js"
   },
   "author": "Ing. Stiven Rojas",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
+    "path": "^0.12.7",
     "pdfmake": "^0.1.54",
     "promise-mysql": "^3.3.1"
   },
