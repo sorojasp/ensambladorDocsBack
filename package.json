@@ -4,7 +4,7 @@
   "description": "servidor de demo de ensamblador de documentos",
   "main": "index.js",
   "scripts": {
-    "start": "npm build/index.js"
+    "start": "node build/index.js"
   },
   "author": "Ing. Stiven Rojas",
   "license": "ISC",
