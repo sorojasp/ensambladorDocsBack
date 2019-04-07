@@ -10,7 +10,7 @@ class IndexControllers{
         
          const resultado= await Abogado.consulta();
          console.log(resultado)
-         res.send(resultado);
+         res.status(200).send(resultado)
          return (resultado[0])    
     }
 

@@ -15,7 +15,7 @@ class IndexControllers {
             //res.send('nueva ruta desde el controlador');
             const resultado = yield index_models_1.Abogado.consulta();
             console.log(resultado);
-            res.send(resultado);
+            res.status(200).send(resultado);
             return (resultado[0]);
         });
     }

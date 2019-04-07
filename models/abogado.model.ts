@@ -9,7 +9,7 @@ import { MysqlError } from "mysql";
 
       public async consulta () {
           this.dataAbogado = undefined; 
-          this.dataAbogado =  await database.query('SELECT *FROM db_abogados WHERE cedula=9147634');
+          this.dataAbogado =  await database.query('SELECT *FROM db_abogados WHERE cedula=85477781');
           if(this.dataAbogado== undefined){
             throw new Error("you was problem")
           }else{

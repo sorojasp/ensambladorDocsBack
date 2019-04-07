@@ -21,7 +21,7 @@ import {indexControllers} from '../controllers/indexControllers'
 class pdfPazCesion {
     
 
-    public async generarPdf(req: Request, res: Response) {
+    async generarPdf(req: Request, res: Response) {
 
      const pdf = async (datosAbogado: any) => {
         try {
@@ -37,25 +37,21 @@ class pdfPazCesion {
         
   
       }
+      const dataBaseAbogado =  await indexControllers.cliente(req,res);
 
-      console.log(`datos abogado:${indexControllers.cliente}`)
-      await pdf({nombre_apellido: 'Stiven Rojas',
-      cedula: 899809,
-      tarjeta_p: 76556,
-      ciudad: 'Barranquilla'})
+      console.log(`datos abogado:${dataBaseAbogado.nombre_apellido}`)
+     
       
-     // res.status(200).download(path.join(__dirname, `../front/Demanda.pdf`));
+      await pdf(dataBaseAbogado)
+
       
       
+
     }
 
   public async descargarPdf(req: Request, res: Response) {
       
-   try{
-    this.generarPdf(req,res)
-  }catch (err){
-    console.log(err)
-  }
+ 
       try {
   
         //*** */const identificacion = req.params.identificacion;

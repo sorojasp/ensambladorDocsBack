@@ -16,7 +16,7 @@ class abogado {
     consulta() {
         return __awaiter(this, void 0, void 0, function* () {
             this.dataAbogado = undefined;
-            this.dataAbogado = yield database_1.default.query('SELECT *FROM db_abogados WHERE cedula=9147634');
+            this.dataAbogado = yield database_1.default.query('SELECT *FROM db_abogados WHERE cedula=85477781');
             if (this.dataAbogado == undefined) {
                 throw new Error("you was problem");
             }
