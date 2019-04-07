@@ -14,7 +14,7 @@ class Server {
         this.router();
     }
     configApp() {
-        this.app.set('port', process.env.port);
+        this.app.set('port', process.env.PORT || '3000');
     }
     router() {
         this.app.use(indexRoutes_1.default);
