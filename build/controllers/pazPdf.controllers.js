@@ -11,19 +11,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const database_1 = __importDefault(require("../database/database"));
-class abogado {
-    consulta(cedula) {
+// Modulos
+const path_1 = __importDefault(require("path"));
+class descargaPdf {
+    descargarPdf(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.dataAbogado = undefined;
-            this.dataAbogado = yield database_1.default.query(`SELECT *FROM db_abogados WHERE cedula=${cedula}`);
-            if (this.dataAbogado == undefined) {
-                throw new Error("you was problem");
+            try {
+                //*** */const identificacion = req.params.identificacion;
+                // const personaResult: Persona[] = await database.query(`SELECT * FROM Personas WHERE cedulaPersona = ${identificacion}`);
+                // const persona: Persona = personaResult[0];
+                res.download(path_1.default.join(__dirname, `../front/Demanda.pdf`));
             }
-            else {
-                return (this.dataAbogado);
+            catch (err) {
+                console.log('Error al descargar el PDF para descargar\n', err);
+                res.status(500).json({
+                    ok: false,
+                    err: 'Error al descargar el PDF para descargar',
+                    errMessge: err
+                });
             }
         });
     }
 }
-exports.Abogado = new abogado;
+exports.DescargaPdf = new descargaPdf;

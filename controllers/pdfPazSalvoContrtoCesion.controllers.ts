@@ -18,14 +18,17 @@ import DocDefinition from '../funcionalidades/generarPdf/DocDefinition';
 
 import {indexControllers} from '../controllers/indexControllers'
 
+import fs from 'fs';
+
+
 class pdfPazCesion {
     
 
     async generarPdf(req: Request, res: Response) {
 
-      
-      
+      console.log(req.body)
 
+      
      const pdf = async (datosAbogado: any) => {
         try {
           const docDefinition = new DocDefinition(datosAbogado);
@@ -37,33 +40,17 @@ class pdfPazCesion {
         catch (e) {
           console.log(e, 'err')
         }
-        
   
       }
-      const dataBaseAbogado =  await indexControllers.cliente(req,res);
+      const dataBaseAbogado =  await indexControllers.cliente(req,res,req.body.cedula);
 
-  
-
-      console.log(`datos abogado:${dataBaseAbogado.nombre_apellido}`)
-     
-      
       await pdf(dataBaseAbogado)
 
-      //res.setHeader('Content-Type', 'application/pdf');
-     
-      //res.download(path.join(__dirname, `../front/Demanda.pdf`));
-//https://expressjs.com/en/api.html#res.download
-      res.download(path.join(__dirname, `../front/Demanda.pdf`), 'Demanda.pdf', function(err){
-        if (err) {
-          console.log(err)
-        } else {
-          // decrement a download credit, etc.
-        }
-      });
-      
+      res.status(200).send(dataBaseAbogado)
+
     }
 
-  public async descargarPdf(req: Request, res: Response) {
+   async descargarPdf(req: Request, res: Response) {
       
  
       try {
@@ -91,6 +78,8 @@ class pdfPazCesion {
   
   
     }
+
+  
 
 }
 

@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_models_1 = require("../models/index.models");
 class IndexControllers {
-    cliente(req, res) {
+    cliente(req, res, cedula) {
         return __awaiter(this, void 0, void 0, function* () {
             //res.send('nueva ruta desde el controlador');
-            const resultado = yield index_models_1.Abogado.consulta();
+            const resultado = yield index_models_1.Abogado.consulta(cedula);
             console.log(resultado);
-            res.status(200).send(resultado);
+            //res.status(200).send(resultado[0])
             return (resultado[0]);
         });
     }

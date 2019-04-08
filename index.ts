@@ -3,10 +3,15 @@ import indexRouter from './routes/indexRoutes';
 import morgan from 'morgan';
 import cors from 'cors';
 import pool from './database/database';
+import { Response, Request } from 'express';
+
+
 
 
 export class Server {
    public app: Application;
+  
+
    
     constructor() {
         this.app = express();
@@ -17,8 +22,20 @@ export class Server {
     }
 
     configApp(): void{ //método para configurar app
+       
+        this.app.use(morgan('dev'));//Registra las peticiones que llegan al server
+        this.app.use(cors());
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use((req,res,next)=>{
+            console.log(`urlRequerida:${req.url} - métodoRequerido:${req.method}`);
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        })
         this.app.set('port' , process.env.PORT || '3000');
 
+        
     }
 
     router(): void{ //método para configurar las rutas 
@@ -37,15 +54,8 @@ export class Server {
         /*
           Este metodo se ejecuta en el constructor luego de las configuracione generales del server (Ej: port) y antes de las rutas, con el objetivo de registrar, procesar Cabeceras entre otras funcionalidades.
         */
-        this.app.use(morgan('dev'));//Registra las peticiones que llegan al server
-        this.app.use(cors());
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
-        this.app.use((req,res,next)=>{
-            console.log(`urlRequerida:${req.url} - métodoRequerido:${req.method}`);
-            
+        
 
-        })
 
         
         

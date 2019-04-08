@@ -22,6 +22,7 @@ const indexControllers_1 = require("../controllers/indexControllers");
 class pdfPazCesion {
     generarPdf(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
             const pdf = (datosAbogado) => __awaiter(this, void 0, void 0, function* () {
                 try {
                     const docDefinition = new DocDefinition_1.default(datosAbogado);
@@ -31,20 +32,9 @@ class pdfPazCesion {
                     console.log(e, 'err');
                 }
             });
-            const dataBaseAbogado = yield indexControllers_1.indexControllers.cliente(req, res);
-            console.log(`datos abogado:${dataBaseAbogado.nombre_apellido}`);
+            const dataBaseAbogado = yield indexControllers_1.indexControllers.cliente(req, res, req.body.cedula);
             yield pdf(dataBaseAbogado);
-            //res.setHeader('Content-Type', 'application/pdf');
-            //res.download(path.join(__dirname, `../front/Demanda.pdf`));
-            //https://expressjs.com/en/api.html#res.download
-            res.download(path_1.default.join(__dirname, `../front/Demanda.pdf`), 'Demanda.pdf', function (err) {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    // decrement a download credit, etc.
-                }
-            });
+            res.status(200).send(dataBaseAbogado);
         });
     }
     descargarPdf(req, res) {

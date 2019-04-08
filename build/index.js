@@ -14,6 +14,16 @@ class Server {
         this.router();
     }
     configApp() {
+        this.app.use(morgan_1.default('dev')); //Registra las peticiones que llegan al server
+        this.app.use(cors_1.default());
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use((req, res, next) => {
+            console.log(`urlRequerida:${req.url} - métodoRequerido:${req.method}`);
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
         this.app.set('port', process.env.PORT || '3000');
     }
     router() {
@@ -28,13 +38,6 @@ class Server {
         /*
           Este metodo se ejecuta en el constructor luego de las configuracione generales del server (Ej: port) y antes de las rutas, con el objetivo de registrar, procesar Cabeceras entre otras funcionalidades.
         */
-        this.app.use(morgan_1.default('dev')); //Registra las peticiones que llegan al server
-        this.app.use(cors_1.default());
-        this.app.use(express_1.default.json());
-        this.app.use(express_1.default.urlencoded({ extended: false }));
-        this.app.use((req, res, next) => {
-            console.log(`urlRequerida:${req.url} - métodoRequerido:${req.method}`);
-        });
     }
 }
 exports.Server = Server;

@@ -1,5 +1,6 @@
 import database from "../database/database";
 import { MysqlError } from "mysql";
+import {PdfPazCesion} from "../controllers/pdfPazSalvoContrtoCesion.controllers";
 
 
  class abogado {
@@ -7,9 +8,9 @@ import { MysqlError } from "mysql";
     dataAbogado: any;
     
 
-      public async consulta () {
+      public async consulta (cedula: number) {
           this.dataAbogado = undefined; 
-          this.dataAbogado =  await database.query('SELECT *FROM db_abogados WHERE cedula=30330429');
+          this.dataAbogado =  await database.query(`SELECT *FROM db_abogados WHERE cedula=${cedula}`);
           if(this.dataAbogado== undefined){
             throw new Error("you was problem")
           }else{

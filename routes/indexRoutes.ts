@@ -23,9 +23,9 @@ import {PdfPazCesion} from '../controllers/pdfPazSalvoContrtoCesion.controllers'
             res.send('inicio')
         })
 
-        this.router.get('/abogados',indexControllers.cliente)
-        this.router.get('/Pdf',PdfPazCesion.generarPdf)
-        
+        //this.router.get('/abogados',indexControllers.cliente)
+        this.router.post('/generaPdf',PdfPazCesion.generarPdf)
+        this.router.get('/descargaPdf',PdfPazCesion.descargarPdf)
         
 }
 }
