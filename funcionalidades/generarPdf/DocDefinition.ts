@@ -14,10 +14,10 @@ export default class DocDefinition {
 
         {
           text: [
-            `PAZ Y SALVO POR EL CONTRATO DE CESIÓN DE CRÉDITOS SOBRE UNA SENTENCIA/CONCILIACIÓN JUDICIAL `,
-            '\n\n',
+           {text: `PAZ Y SALVO POR EL CONTRATO DE CESIÓN DE CRÉDITOS SOBRE UNA SENTENCIA/CONCILIACIÓN JUDICIAL `,
+             alignment: 'center', bold: true},
 
-            { text: `${variablesPdf.nombre_apellido}`, bold: true },
+            { text: `\n\n\n${variablesPdf.nombre_apellido}`, bold: true },
 
             `, identificado/a/s con la cédula de ciudadanía N°`,
             { text: `${variablesPdf.cedula}`, bold: true },
@@ -26,9 +26,18 @@ export default class DocDefinition {
             ` , y portador/a/es de la tarjeta profesional N°`,
             { text: `${variablesPdf.tarjeta_p}`, bold: true },
             `del Consejo Superior de la Judicatura, actuando en calidad de APODERADO/A/S y por tanto en nombre y representación del/las/los señor/e/a/s:`,  //HASTA AQUIÍ
-            { text: `${variablesPdf.ciudadAccionado}`, fontSize: 15, bold: true },
-            `, para que mediante el tramite propio del proceso ordinario laboral de mínima cuantía y mediante sentencia se profieran las respectivas condenas que más adelante entrare a solicitar, para lo cual me fundamento en los hechos y normas que a continuación relaciono.`,
-
+            { text: `Stiven Rojas`,  bold: true },
+            `,quien/es está/n  debidamente identificado/a/s en el/los poder/es especial/es que me fue/ron conferido/s. `,
+            {text:`\n\nMANIFIESTO/AMOS a través del presente documento que la sociedad comercial CONFIVAL S.A.S. identificada con el NIT. 900.849.501-8, está  a paz y salvo por todo concepto pasado, presente y futuro del pago del precio acordado como contraprestación, así como de todas las demás obligaciones surgidas del Contrato de cesión de créditos, celebrado el día`},
+            { text: `${variablesPdf.fecha_actualizacion}`, bold: true },
+            {text: `cuyo objeto fue la transferencia de los derechos económicos reconocidos a mi/nuestro favor y a favor del/las/los beneficiario/a/s antes referido/a/s (, en la condena impuesta a la [Entidad condenada cuando sea aparte] según), en la sentencia de primera instancia proferida por el/ conciliación extrajudicial llevada a cabo por la.......` },
+            {text:`\n\n\n\n El resto de los datos no se pueden relacionar en este documento hasta que la mayoría de las  base de datos manejadas por Confival este migrada en base de datos sql. En caso de estar interesados en hacer el ensamble de documentos con nosotros, no dude en comunicarse con Inofa S.A.S`,bold: true, fontSize: 14},
+            
+            {text: `\n\nNOMBRES:${variablesPdf.nombre_apellido}`,bold: true, fontSize: 16},
+            {text: `\nC.C. N°: ${variablesPdf.cedula}`,bold: true, fontSize: 16},
+            {text: `\nT.P. N°: ${variablesPdf.tarjeta_p}`,bold: true, fontSize: 16},
+            {text:`\n\n\n\n Demo realizado por: Ing. Stiven Rojas.`,bold: true, fontSize: 14},
+              
           ], alignment: 'justify'
         }/*,
         { text: `\n\nTipo de proceso`, alignment: 'center', bold: true },
