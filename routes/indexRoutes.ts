@@ -19,9 +19,7 @@ import {PdfPazCesion} from '../controllers/pdfPazSalvoContrtoCesion.controllers'
             res.send('usos')
         })
 
-        this.router.get('/',(req,res)=>{
-            res.send('inicio')
-        })
+      
 
         //this.router.get('/abogados',indexControllers.cliente)
         this.router.post('/generaPdf',PdfPazCesion.generarPdf)

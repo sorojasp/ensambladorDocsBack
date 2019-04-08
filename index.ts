@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import pool from './database/database';
 import { Response, Request } from 'express';
+import path from 'path';
 
 
 
@@ -23,6 +24,8 @@ export class Server {
 
     configApp(): void{ //método para configurar app
        
+        this.app.use('/',express.static(path.join(__dirname,'public')));
+        
         this.app.use(morgan('dev'));//Registra las peticiones que llegan al server
         this.app.use(cors());
         this.app.use(express.json());

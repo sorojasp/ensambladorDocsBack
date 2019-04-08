@@ -1,0 +1,27 @@
+.img_logo{
+
+    width:7rem;
+    height:7rem;
+    
+}
+
+.cabecera{
+overflow: hidden;
+
+}
+
+.cabeceraTextos{
+
+    font-size: 2rem;
+}
+
+
+
+
+#cedulaAbogado{
+    
+    justify-content:center;
+    margin-right:auto;
+    align-items: start;
+    
+}

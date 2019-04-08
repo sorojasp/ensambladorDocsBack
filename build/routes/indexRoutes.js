@@ -14,9 +14,6 @@ class IndexRouter {
         this.router.get('/usuarios', (req, res) => {
             res.send('usos');
         });
-        this.router.get('/', (req, res) => {
-            res.send('inicio');
-        });
         //this.router.get('/abogados',indexControllers.cliente)
         this.router.post('/generaPdf', pdfPazSalvoContrtoCesion_controllers_1.PdfPazCesion.generarPdf);
         this.router.get('/descargaPdf', pdfPazSalvoContrtoCesion_controllers_1.PdfPazCesion.descargarPdf);
